@@ -1,0 +1,69 @@
+package test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Main {
+
+	public static void main(String[] args) {
+		List listString = new ArrayList<>();
+		List results = new ArrayList<>();
+	//Map results = new HashMap<>();
+		
+		listString.add("UD");
+		listString.add("LLRR");
+		listString.add("UUDDLRLR");
+		listString.add("ULDR");
+		listString.add("UUUU");
+		listString.add("UUDDRLRR");
+		listString.add("UUUDDDRRRRLLLL");
+		listString.add("UDUDUDUD");
+		listString.add("RRRUUULLLDDD");
+		
+		//System.out.println(listString);
+		for(int i=0;i<listString.size();i++) {
+			int x = 0;
+			int y= 0;
+			for(int j=0;j<listString.get(i).toString().length();j++) {
+				//System.out.println(listString.get(i).toString().length());
+				String current = listString.get(i).toString();
+				System.out.println("current String = " + current);
+				if(current.charAt(j)=='U'){
+					y++;
+				}
+				if(current.charAt(j)=='D') {
+					y--;
+				}
+				if(current.charAt(j)=='L') {
+					x--;
+				}
+				if(current.charAt(j)=='R') {
+					x++;
+				}
+			}
+			//System.out.println("x=" + x+"\ny=" + y);
+			//results.add(x);
+			//results.add(y);
+			
+			x = Math.abs(x);
+			y = Math.abs(y);
+			
+			int efficient = Math.abs(x+y);
+			
+			int result = Math.abs(listString.get(i).toString().length() - efficient);
+			
+			results.add(result);
+		}
+		
+		
+		//System.out.println(results);
+		
+		for(int i=0;i<listString.size();i++) {
+			System.out.println("String " + i + " " + listString.get(i) + "- Result= " +  results.get(i));
+		}
+		
+	}
+}

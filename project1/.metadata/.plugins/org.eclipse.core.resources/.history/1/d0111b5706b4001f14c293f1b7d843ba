@@ -1,0 +1,20 @@
+package test;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class Test {
+	public static void main(String[] args) {
+		String fileName = "C:\\Users\\lourd\\Desktop\\MyProjects\\input.txt";
+		byte[] bytes = null;
+		try {
+			bytes = Files.readAllBytes(Paths.get(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String content = new String(bytes, StandardCharsets.UTF_8);
+		System.out.println(content);
+	}
+}

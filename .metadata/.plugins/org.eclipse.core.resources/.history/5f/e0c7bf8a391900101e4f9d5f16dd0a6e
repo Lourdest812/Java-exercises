@@ -1,0 +1,21 @@
+package test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+	public static void main(String[] args) {
+		List listString = new ArrayList<>();
+		
+		listString.add("UD");
+		listString.add("LLRR");
+		listString.add("UUDDLRLR");
+		listString.add("ULDR");
+		listString.add("UUUU");
+		
+		System.out.println(listString);
+		
+	}
+
+}

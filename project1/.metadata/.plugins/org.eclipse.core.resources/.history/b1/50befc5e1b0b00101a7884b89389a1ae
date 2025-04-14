@@ -1,0 +1,41 @@
+package test;
+import java.util.*;
+
+public class Test {
+	    public static void main(String[] args) {
+	        List<Integer> numbers = Arrays.asList(7, 13, 29, 15, 6, 5); // Example numbers
+	        
+	        // Step 1-4: Store numbers with their consecutive '1's count
+	        Map<Integer, Integer> onesCountMap = new HashMap<>();
+	        
+	        for (int num : numbers) {
+	            String binary = Integer.toBinaryString(num); // Convert to binary
+	            int maxOnes = countMaxConsecutiveOnes(binary); // Get max consecutive 1s
+	            onesCountMap.put(num, maxOnes); // Store in HashMap
+	            System.out.println(num + " -> " + binary + " (Max 1s: " + maxOnes + ")");
+	        }
+
+	        // Step 5: Sort the numbers based on their max consecutive '1's
+	        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+	        sortedNumbers.sort((a, b) -> onesCountMap.get(b) - onesCountMap.get(a)); // Descending order
+
+	        System.out.println("Sorted numbers: " + sortedNumbers);
+	    }
+
+	    // Method to count the maximum consecutive '1's in a binary string
+	    public static int countMaxConsecutiveOnes(String binary) {
+	        String[] onesGroups = binary.split("0"); // Split by '0' to get groups of '1's
+	        int maxOnes = onesGroups[0].length();
+	        
+	        for(String group : onesGroups) {
+	        	if(group.length()>maxOnes) {
+	        		maxOnes = group.length();
+	        	}
+	        }
+
+	        return maxOnes;
+	    }
+	}
+
+
+

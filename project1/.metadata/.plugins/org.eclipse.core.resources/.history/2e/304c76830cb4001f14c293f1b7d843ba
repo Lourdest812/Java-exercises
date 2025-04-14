@@ -1,0 +1,59 @@
+package test;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+	public static void main(String[] args) {
+		String fileName = "C:\\Users\\lourd\\Desktop\\MyProjects\\input.txt";
+
+		readFile(fileName);
+		turnFileIntoString(fileName);
+	}
+	
+	public static String readFile(String fileName) {
+		byte[] bytes = null;
+		try {
+			bytes = Files.readAllBytes(Paths.get(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String content = new String(bytes, StandardCharsets.UTF_8);
+		//System.out.println(content);
+		System.out.println(content.getClass());
+		
+		return content;
+	}
+	
+	public static List<Long> turnFileIntoString(String fileName){
+		String content = readFile(fileName);
+		StringBuilder newString=new StringBuilder();
+		List <Long> contentList = new ArrayList<>(); 
+		
+		for(int i=0;i<content.length();i++){
+			if(content.charAt(i)!=' ') {
+				newString.append(content.charAt(i));
+				//System.out.println(newString);
+				
+			if(newString.length()>0) {
+				try {
+					long number = Long.parseLong(newString.toString());
+					contentList.add(number);
+					System.out.print(number);
+					newString.setLength(0);
+				}catch(Exception e) {
+					System.out.println("ERROR");
+				}
+			}
+		}
+		
+		}
+		return contentList;
+	}
+	
+}
+
